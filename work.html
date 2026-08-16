@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Work — Noah Rasmus</title>
+    <meta name="description" content="A gallery of finished pieces by Noah Rasmus." />
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-header__brand" href="index.html">Noah Rasmus</a>
+      <button
+        class="site-header__nav-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+      >
+        ≡
+      </button>
+      <nav class="nb" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="work.html" aria-current="page">Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <div class="work-head">
+        <h1 class="wm">Work</h1>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter by placement">
+        <button class="filter" type="button" data-filter="All" aria-pressed="true">All</button>
+        <button class="filter" type="button" data-filter="Arm" aria-pressed="false">Arm</button>
+        <button class="filter" type="button" data-filter="Leg" aria-pressed="false">Leg</button>
+        <button class="filter" type="button" data-filter="Back" aria-pressed="false">Back</button>
+        <button class="filter" type="button" data-filter="Torso" aria-pressed="false">Torso</button>
+      </div>
+
+      <div class="grid" data-grid>
+        <div class="grid__piece" data-tag="Arm" style="grid-row: span 2">
+          <a href="piece.html">
+            <div class="slot" data-placeholder="Forearm"><img src="" alt="Forearm piece, 2025" /></div>
+            <div class="grid__caption">Forearm · 2025</div>
+          </a>
+        </div>
+        <div class="grid__piece" data-tag="Leg" style="grid-row: span 3">
+          <a href="piece.html">
+            <div class="slot" data-placeholder="Calf"><img src="" alt="Calf piece, 2025" /></div>
+            <div class="grid__caption">Calf · 2025</div>
+          </a>
+        </div>
+        <div class="grid__piece" data-tag="Back" style="grid-row: span 2">
+          <a href="piece.html">
+            <div class="slot" data-placeholder="Back"><img src="" alt="Back piece, 2024" /></div>
+            <div class="grid__caption">Back · 2024</div>
+          </a>
+        </div>
+        <div class="grid__piece" data-tag="Torso" style="grid-row: span 3">
+          <a href="piece.html">
+            <div class="slot" data-placeholder="Sternum"><img src="" alt="Sternum piece, 2025" /></div>
+            <div class="grid__caption">Sternum · 2025</div>
+          </a>
+        </div>
+        <div class="grid__piece" data-tag="Arm" style="grid-row: span 3">
+          <a href="piece.html">
+            <div class="slot" data-placeholder="Upper arm"><img src="" alt="Upper arm piece, 2024" /></div>
+            <div class="grid__caption">Upper arm · 2024</div>
+          </a>
+        </div>
+        <div class="grid__piece" data-tag="Leg" style="grid-row: span 2">
+          <a href="piece.html">
+            <div class="slot" data-placeholder="Thigh"><img src="" alt="Thigh piece, 2025" /></div>
+            <div class="grid__caption">Thigh · 2025</div>
+          </a>
+        </div>
+        <div class="grid__piece" data-tag="Arm" style="grid-row: span 2">
+          <a href="piece.html">
+            <div class="slot" data-placeholder="Shoulder"><img src="" alt="Shoulder piece, 2023" /></div>
+            <div class="grid__caption">Shoulder · 2023</div>
+          </a>
+        </div>
+        <div class="grid__piece" data-tag="Back" style="grid-row: span 3">
+          <a href="piece.html">
+            <div class="slot" data-placeholder="Spine"><img src="" alt="Spine piece, 2024" /></div>
+            <div class="grid__caption">Spine · 2024</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="grid-count" data-count></div>
+    </main>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
