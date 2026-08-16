@@ -3,16 +3,67 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Noah Rasmus</title>
-    <meta name="description" content="Noah Rasmus" />
+    <title>Noah Rasmus — Black &amp; grey tattooing</title>
+    <meta
+      name="description"
+      content="Noah Rasmus — black and grey tattooing. Graphic, heavy on contrast, drawn for the body it sits on."
+    />
     <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+    />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <main>
-      <h1>Noah Rasmus</h1>
-      <p>Site coming soon.</p>
+      <section class="hero" aria-label="Introduction">
+        <div class="hero__image">
+          <div class="slot" data-placeholder="Full-bleed lead image (shot on black)">
+            <img src="" alt="" />
+          </div>
+        </div>
+        <div class="hero__scrim"></div>
+
+        <div class="hero__inner">
+          <header class="hero__top">
+            <div class="hero__mark">N. Rasmus</div>
+            <nav class="nb hero__nav" aria-label="Primary">
+              <a href="#work">Work</a>
+              <a href="#about">About</a>
+              <a href="#contact">Contact</a>
+            </nav>
+          </header>
+
+          <div class="hero__content">
+            <h1 class="wm hero__title">Noah<br />Rasmus</h1>
+            <p class="hero__lede">
+              Black and grey tattooing. Graphic, heavy on contrast, drawn for the
+              body it sits on.
+            </p>
+            <div class="hero__cta">
+              <a class="btn btn-primary" href="#work">See the work</a>
+              <a class="btn btn-ghost" href="#contact">Get in touch</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="recent" aria-label="Recent work">
+        <div class="slot" data-placeholder="Recent"><img src="" alt="" /></div>
+        <div class="slot" data-placeholder="Recent"><img src="" alt="" /></div>
+        <div class="slot" data-placeholder="Recent"><img src="" alt="" /></div>
+        <div class="slot" data-placeholder="Recent"><img src="" alt="" /></div>
+      </section>
+
+      <div class="recent-caption">
+        <span>Recent work</span>
+        <span>Updated monthly</span>
+      </div>
     </main>
+
     <script src="js/main.js"></script>
   </body>
 </html>
