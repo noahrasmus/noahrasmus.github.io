@@ -66,6 +66,15 @@ document.addEventListener("click", (e) => {
   const layerA = stage.querySelector('[data-layer="a"]');
   const layerB = stage.querySelector('[data-layer="b"]');
   const stripImgs = Array.from(strip.querySelectorAll(".slot img"));
+  const progress = document.querySelector("[data-progress]");
+  if (progress) progress.style.animationDuration = ROTATE_MS + "ms";
+
+  function restartProgress() {
+    if (!progress) return;
+    progress.classList.remove("is-running");
+    void progress.offsetWidth;
+    progress.classList.add("is-running");
+  }
 
   let idx = 0;
   let showingA = true;
@@ -87,6 +96,7 @@ document.addEventListener("click", (e) => {
   layerB.src = IMAGES[(idx + 1) % IMAGES.length].src;
   layerB.alt = IMAGES[(idx + 1) % IMAGES.length].alt;
   renderStrip();
+  restartProgress();
 
   function tick() {
     idx = (idx + 1) % IMAGES.length;
@@ -107,6 +117,7 @@ document.addEventListener("click", (e) => {
 
     showingA = !showingA;
     renderStrip();
+    restartProgress();
   }
 
   setInterval(tick, ROTATE_MS);

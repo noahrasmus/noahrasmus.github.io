@@ -347,6 +347,30 @@ a:hover {
   pointer-events: auto;
 }
 
+/* ─── slider progress bar ─── */
+.slider-progress {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+.slider-progress__bar {
+  height: 100%;
+  width: 0;
+  background: var(--color-accent);
+  transform-origin: left center;
+}
+.slider-progress__bar.is-running {
+  animation: slider-progress linear forwards;
+}
+@keyframes slider-progress {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 /* ─── recent-work strip ─── */
 .recent {
   display: flex;
