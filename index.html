@@ -21,11 +21,14 @@
     <main>
       <section class="hero" aria-label="Introduction">
         <div class="hero__image">
-          <div class="slot slot--contain" data-placeholder="Full-bleed lead image (shot on black)">
+          <div class="slot slot--contain" data-hero-stage>
             <img
+              class="hero__slide is-active"
+              data-layer="a"
               src="assets/tattoo-01.jpeg"
-              alt="Skeletal hand tattoo wrapped by a snake and rose, black and grey"
+              alt="Skeletal hand wrapped by a snake and rose"
             />
+            <img class="hero__slide" data-layer="b" src="" alt="" aria-hidden="true" />
           </div>
         </div>
         <div class="hero__scrim"></div>
@@ -54,19 +57,11 @@
         </div>
       </section>
 
-      <section class="recent" aria-label="Recent work">
-        <div class="slot slot--contain" data-placeholder="Recent">
-          <img src="assets/tattoo-02.jpeg" alt="Warrior sleeve — calf, 2025" />
-        </div>
-        <div class="slot slot--contain" data-placeholder="Recent">
-          <img src="assets/tattoo-04-thigh.jpeg" alt="Dragon — thigh, 2025" />
-        </div>
-        <div class="slot slot--contain" data-placeholder="Recent">
-          <img src="assets/tattoo-05-arm.jpeg" alt="Veiled portrait — upper arm, 2024" />
-        </div>
-        <div class="slot slot--contain" data-placeholder="Recent">
-          <img src="assets/tattoo-03-back.jpeg" alt="Odin — back, 2024" />
-        </div>
+      <section class="recent" aria-label="Recent work" data-recent-strip>
+        <div class="slot slot--contain"><img src="" alt="" /></div>
+        <div class="slot slot--contain"><img src="" alt="" /></div>
+        <div class="slot slot--contain"><img src="" alt="" /></div>
+        <div class="slot slot--contain"><img src="" alt="" /></div>
       </section>
 
       <div class="recent-caption">

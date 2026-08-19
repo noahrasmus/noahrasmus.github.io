@@ -38,3 +38,76 @@ document.addEventListener("click", (e) => {
   }
   apply("All");
 })();
+
+// Home hero slider — rotates hero image every ROTATE_MS,
+// with the "next in queue" always visible in the strip below.
+(function initHeroSlider() {
+  const stage = document.querySelector("[data-hero-stage]");
+  const strip = document.querySelector("[data-recent-strip]");
+  if (!stage || !strip) return;
+
+  const IMAGES = [
+    { src: "assets/tattoo-01.jpeg", alt: "Skeletal hand wrapped by a snake and rose" },
+    { src: "assets/tattoo-02.jpeg", alt: "Warrior sleeve — calf" },
+    { src: "assets/tattoo-04-thigh.jpeg", alt: "Dragon — thigh" },
+    { src: "assets/tattoo-05-arm.jpeg", alt: "Veiled portrait — upper arm" },
+    { src: "assets/tattoo-03-back.jpeg", alt: "Arm sleeve" },
+    { src: "assets/tattoo-06-hip.jpeg", alt: "Chained serpent — hip" },
+  ];
+  const ROTATE_MS = 4500;
+  const CROSSFADE_MS = 900;
+
+  // Preload so swaps don't stutter on first pass.
+  for (const it of IMAGES) {
+    const im = new Image();
+    im.src = it.src;
+  }
+
+  const layerA = stage.querySelector('[data-layer="a"]');
+  const layerB = stage.querySelector('[data-layer="b"]');
+  const stripImgs = Array.from(strip.querySelectorAll(".slot img"));
+
+  let idx = 0;
+  let showingA = true;
+
+  function renderStrip() {
+    for (let i = 0; i < stripImgs.length; i++) {
+      const item = IMAGES[(idx + 1 + i) % IMAGES.length];
+      if (stripImgs[i].getAttribute("src") !== item.src) {
+        stripImgs[i].src = item.src;
+        stripImgs[i].alt = item.alt;
+      }
+    }
+  }
+
+  // Seed layer A with the current image, prime layer B with the next.
+  layerA.src = IMAGES[idx].src;
+  layerA.alt = IMAGES[idx].alt;
+  layerA.classList.add("is-active");
+  layerB.src = IMAGES[(idx + 1) % IMAGES.length].src;
+  layerB.alt = IMAGES[(idx + 1) % IMAGES.length].alt;
+  renderStrip();
+
+  function tick() {
+    idx = (idx + 1) % IMAGES.length;
+    const incoming = showingA ? layerB : layerA;
+    const outgoing = showingA ? layerA : layerB;
+
+    incoming.classList.add("is-active");
+    outgoing.classList.remove("is-active");
+    outgoing.setAttribute("aria-hidden", "true");
+    incoming.removeAttribute("aria-hidden");
+
+    // After the crossfade finishes, prime the now-hidden layer with the next image.
+    setTimeout(() => {
+      const nextItem = IMAGES[(idx + 1) % IMAGES.length];
+      outgoing.src = nextItem.src;
+      outgoing.alt = nextItem.alt;
+    }, CROSSFADE_MS);
+
+    showingA = !showingA;
+    renderStrip();
+  }
+
+  setInterval(tick, ROTATE_MS);
+})();
