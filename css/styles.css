@@ -272,7 +272,7 @@ a:hover {
 .hero__image .slot img {
   object-fit: contain;
   object-position: right center;
-  padding: 24px 40px 24px 0;
+  padding: 88px 40px 24px 0;
 }
 .hero__scrim {
   position: absolute;
@@ -298,12 +298,11 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 22px 0 20px;
+  padding: 24px var(--page-pad-x) 22px;
   margin: 0 calc(-1 * var(--page-pad-x));
-  padding-left: var(--page-pad-x);
-  padding-right: var(--page-pad-x);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: #000;
+  pointer-events: auto;
 }
 .hero__mark {
   font: 500 12px/1 var(--font-heading);
