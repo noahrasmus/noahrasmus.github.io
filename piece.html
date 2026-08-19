@@ -19,24 +19,12 @@
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/pages.css" />
+    <script defer src="js/content.js"></script>
+    <script defer src="js/ui.js"></script>
+    <script defer src="js/main.js"></script>
   </head>
-  <body>
-    <header class="site-header">
-      <a class="site-header__brand" href="index.html">Noah Rasmus</a>
-      <button
-        class="site-header__nav-toggle"
-        type="button"
-        aria-label="Toggle navigation"
-      >
-        ≡
-      </button>
-      <nav class="nb" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="work.html" aria-current="page">Work</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </header>
+  <body data-page="work">
+    <header class="site-header" data-partial="site-header"></header>
 
     <main>
       <article class="piece">
@@ -89,7 +77,5 @@
         </div>
       </div>
     </main>
-
-    <script src="js/main.js"></script>
   </body>
 </html>

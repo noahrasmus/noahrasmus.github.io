@@ -19,8 +19,11 @@
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/pages.css" />
+    <script defer src="js/content.js"></script>
+    <script defer src="js/ui.js"></script>
+    <script defer src="js/main.js"></script>
   </head>
-  <body>
+  <body data-page="home">
     <main>
       <section class="hero" aria-label="Introduction">
         <div class="hero__image">
@@ -39,11 +42,7 @@
         <div class="hero__inner">
           <header class="hero__top">
             <div class="hero__mark">N. Rasmus</div>
-            <nav class="nb hero__nav" aria-label="Primary">
-              <a href="work.html">Work</a>
-              <a href="about.html">About</a>
-              <a href="contact.html">Contact</a>
-            </nav>
+            <nav class="nb hero__nav" aria-label="Primary" data-partial="hero-nav"></nav>
           </header>
 
           <div class="hero__content">
@@ -78,39 +77,12 @@
 
       <a class="preview-link" href="work.html" aria-label="See all work">
         <section class="preview">
-          <div class="grid preview__grid">
-            <div class="grid__piece" style="grid-row: span 2">
-              <div class="slot slot--contain"><img src="assets/tattoo-01.jpeg" alt="Forearm — 2025" /></div>
-              <div class="grid__caption">Forearm · 2025</div>
-            </div>
-            <div class="grid__piece" style="grid-row: span 3">
-              <div class="slot slot--contain"><img src="assets/tattoo-02.jpeg" alt="Calf — 2025" /></div>
-              <div class="grid__caption">Calf · 2025</div>
-            </div>
-            <div class="grid__piece" style="grid-row: span 2">
-              <div class="slot slot--contain"><img src="assets/tattoo-03-back.jpeg" alt="Arm sleeve — 2024" /></div>
-              <div class="grid__caption">Arm · 2024</div>
-            </div>
-            <div class="grid__piece" style="grid-row: span 3">
-              <div class="slot slot--contain"><img src="assets/tattoo-06-hip.jpeg" alt="Hip — chained serpent, 2025" /></div>
-              <div class="grid__caption">Hip · 2025</div>
-            </div>
-            <div class="grid__piece" style="grid-row: span 3">
-              <div class="slot slot--contain"><img src="assets/tattoo-05-arm.jpeg" alt="Upper arm — 2024" /></div>
-              <div class="grid__caption">Upper arm · 2024</div>
-            </div>
-            <div class="grid__piece" style="grid-row: span 2">
-              <div class="slot slot--contain"><img src="assets/tattoo-04-thigh.jpeg" alt="Thigh — dragon, 2025" /></div>
-              <div class="grid__caption">Thigh · 2025</div>
-            </div>
-          </div>
+          <div class="grid preview__grid" data-preview-grid></div>
           <div class="preview__overlay" aria-hidden="true">
             <span class="preview__cta">See all work →</span>
           </div>
         </section>
       </a>
     </main>
-
-    <script src="js/main.js"></script>
   </body>
 </html>
