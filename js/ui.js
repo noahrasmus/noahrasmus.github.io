@@ -3,7 +3,7 @@
    relevant markup isn't on the page, so main.js can call all
    of them on every page without checking.
    ───────────────────────────────────────────────────────────── */
-
+(function () {
 const { SITE, NAV, TATTOOS, FILTER_TAGS, MOTION } = window.__NR;
 
 /* ─── helpers ─── */
@@ -214,3 +214,4 @@ window.__NR_UI = {
   initPreviewGrid,
   initSlider,
 };
+})();

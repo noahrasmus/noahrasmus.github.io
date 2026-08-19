@@ -3,7 +3,7 @@
    Edit here → home slider, home preview, and work grid all
    update. Add a new tattoo by adding one object to TATTOOS.
    ───────────────────────────────────────────────────────────── */
-
+(function () {
 const SITE = {
   brand: "Noah Rasmus",
 };
@@ -84,3 +84,4 @@ const MOTION = {
 };
 
 window.__NR = { SITE, NAV, TATTOOS, FILTER_TAGS, MOTION };
+})();
