@@ -8,8 +8,9 @@ const SITE = {
   brand: "Noah Rasmus",
 };
 
+// "Home" is intentionally omitted — the brand/wordmark is the home link
+// on every page, so a redundant "Home" nav item would be noise.
 const NAV = [
-  { href: "index.html", label: "Home", page: "home" },
   { href: "work.html", label: "Work", page: "work" },
   { href: "about.html", label: "About", page: "about" },
   { href: "contact.html", label: "Contact", page: "contact" },

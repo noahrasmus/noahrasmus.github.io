@@ -31,13 +31,11 @@ function renderTile(t) {
 
 /* ─── nav links (rendered from NAV, with active-page marking) ─── */
 
-function renderNavLinks(activePage, { skipHome } = {}) {
-  return NAV.filter((n) => !(skipHome && n.page === "home"))
-    .map(
-      (n) =>
-        `<a href="${n.href}"${n.page === activePage ? ' aria-current="page"' : ""}>${n.label}</a>`,
-    )
-    .join("");
+function renderNavLinks(activePage) {
+  return NAV.map(
+    (n) =>
+      `<a href="${n.href}"${n.page === activePage ? ' aria-current="page"' : ""}>${n.label}</a>`,
+  ).join("");
 }
 
 /* ─── site header (injected on non-home pages) ─── */
@@ -58,7 +56,7 @@ function initSiteHeader() {
 function initHeroNav() {
   const host = document.querySelector('[data-partial="hero-nav"]');
   if (!host) return;
-  host.innerHTML = renderNavLinks(document.body.dataset.page, { skipHome: true });
+  host.innerHTML = renderNavLinks(document.body.dataset.page);
 }
 
 /* ─── mobile nav toggle ─── */
