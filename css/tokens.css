@@ -4,8 +4,8 @@
    ───────────────────────────────────────────────────────────── */
 :root {
   /* colors */
-  --color-bg: #161826;              /* main page background */
-  --color-bg-solid: #0e0f18;        /* darker "canvas" black used in overlays */
+  --color-bg: #0e0f18;              /* main page background — near-black neutral */
+  --color-bg-solid: #0e0f18;        /* same as --color-bg after the unification pass */
   --color-surface: #232532;
   --color-text: #e9e9ed;
   --color-accent: #9184d9;

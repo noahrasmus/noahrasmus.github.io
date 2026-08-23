@@ -12,12 +12,12 @@
 .hero__image {
   position: absolute;
   inset: 0;
-  background: #000;
+  background: var(--color-bg);
 }
 .hero__image .slot {
   width: 100%;
   height: 100%;
-  background: #000;
+  background: var(--color-bg);
 }
 .hero__image .slot img {
   object-fit: contain;
@@ -41,7 +41,7 @@
   pointer-events: none;
   background: linear-gradient(
     to right,
-    #000 0%,
+    var(--color-bg) 0%,
     rgba(0, 0, 0, 0.4) 40%,
     rgba(0, 0, 0, 0) 55%
   );
@@ -58,22 +58,22 @@
 .hero__top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 24px var(--page-pad-x) 22px;
+  align-items: baseline;
+  padding: 26px var(--page-pad-x) 24px;
   margin: 0 calc(-1 * var(--page-pad-x));
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  background: #000;
+  background: var(--color-bg);
   pointer-events: auto;
 }
 .hero__mark {
-  font: 500 12px/1 var(--font-heading);
-  letter-spacing: 0.2em;
+  font: 500 13px/1 var(--font-heading);
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-neutral-200);
+  color: var(--color-neutral-100);
   text-decoration: none;
 }
 .hero__mark:hover {
-  color: var(--color-neutral-200);
+  color: var(--color-neutral-100);
 }
 .hero__nav {
   pointer-events: auto;
@@ -119,9 +119,6 @@
 @media (max-width: 560px) {
   .hero__title {
     font-size: 44px;
-  }
-  .hero__mark {
-    font-size: 11px;
   }
   .hero__cta {
     flex-wrap: wrap;

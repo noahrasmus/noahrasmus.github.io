@@ -123,7 +123,7 @@
   display: none;
 }
 .slot--contain {
-  background: #000;
+  background: var(--color-bg);
 }
 .slot--contain img {
   object-fit: contain;
