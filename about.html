@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- LAUNCH: remove noindex when the site is ready to be crawled -->
     <meta name="robots" content="noindex, nofollow" />
-    <title>About — Noah Rasmus | Black &amp; grey realism</title>
+    <title>About Noah Rasmus | Black &amp; Grey Tattoo Artist in Camp Hill, PA</title>
     <meta
       name="description"
-      content="Noah Rasmus — black and grey realism tattoo artist. Private studio, by appointment."
+      content="Meet Noah Rasmus — black and grey realism tattoo artist working from a private room at Camp Hill Collective in Camp Hill, Pennsylvania. Custom, appointment-based work."
     />
-    <link rel="icon" href="data:," />
+    <link rel="canonical" href="https://noahrasmus.github.io/about.html" />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Noah Rasmus" />
+    <meta property="og:title" content="About Noah Rasmus | Black &amp; Grey Tattoo Artist in Camp Hill, PA" />
+    <meta property="og:description" content="Black and grey realism tattoo artist at Camp Hill Collective in Camp Hill, Pennsylvania." />
+    <meta property="og:url" content="https://noahrasmus.github.io/about.html" />
+    <meta property="og:image" content="https://noahrasmus.github.io/assets/noah-portrait.jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,6 +34,45 @@
     <script defer src="js/content.js"></script>
     <script defer src="js/ui.js"></script>
     <script defer src="js/main.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://noahrasmus.github.io/#noah",
+          "name": "Noah Rasmus",
+          "jobTitle": "Tattoo Artist",
+          "url": "https://noahrasmus.github.io/",
+          "sameAs": [
+            "https://www.instagram.com/noaharasmus/",
+            "https://camphillcollective.com/pages/artists"
+          ],
+          "knowsAbout": [
+            "Black and grey realism tattooing",
+            "Dark surreal tattooing",
+            "Custom tattoo design"
+          ],
+          "worksFor": { "@id": "https://noahrasmus.github.io/#studio" }
+        },
+        {
+          "@type": "TattooParlor",
+          "@id": "https://noahrasmus.github.io/#studio",
+          "name": "Camp Hill Collective Tattoo and PMU",
+          "url": "https://camphillcollective.com/",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "3805 Market St",
+            "addressLocality": "Camp Hill",
+            "addressRegion": "PA",
+            "postalCode": "17011",
+            "addressCountry": "US"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body data-page="about">
     <header class="site-header" data-partial="site-header"></header>
@@ -40,9 +89,10 @@
           <h1 class="wm">Hi, I'm Noah.</h1>
 
           <p class="lede">
-            I tattoo in black and grey — mostly figures, animals and objects
-            drawn with hard contrast so they still read from across a room in
-            ten years' time.
+            I tattoo in black and grey realism from a private room at Camp Hill
+            Collective in Camp Hill, Pennsylvania — mostly figures, animals and
+            objects drawn with hard contrast so they still read from across a
+            room in ten years' time.
           </p>
 
           <p class="body">
@@ -61,7 +111,10 @@
           <div class="info-grid">
             <div>
               <div class="info-grid__label">Studio</div>
-              <div class="info-grid__value">Private room,<br />by appointment</div>
+              <div class="info-grid__value">
+                Camp Hill Collective<br />
+                Camp Hill, PA
+              </div>
             </div>
             <div>
               <div class="info-grid__label">Books</div>

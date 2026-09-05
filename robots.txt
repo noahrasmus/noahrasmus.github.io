@@ -1,4 +1,6 @@
-# Site in development — no indexing.
-# On launch, replace with the production robots.txt.
+# Site in development — no indexing until launch.
+# LAUNCH: replace the Disallow with `Allow: /` when ready to be crawled.
 User-agent: *
 Disallow: /
+
+Sitemap: https://noahrasmus.github.io/sitemap.xml
