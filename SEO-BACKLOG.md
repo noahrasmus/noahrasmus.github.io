@@ -1,0 +1,181 @@
+# SEO Backlog — Items Remaining After the First Implementation Pass
+
+Follow-up to `noah-rasmus-seo-dev-checklist.md`. The first pass covered
+titles, descriptions, canonicals, JSON-LD, OG/Twitter meta, favicon,
+sitemap, and visible Camp Hill copy across all pages.
+
+This file tracks what's left. Numbering matches the section numbers in
+the original checklist.
+
+---
+
+## 1. Launch flip (P0)
+
+**What:** Remove `<meta name="robots" content="noindex, nofollow">` from every
+page. Change `robots.txt` from `Disallow: /` to `Allow: /`.
+
+**Held because:** You said we'd launch together — not doing it silently.
+
+**Prep already in place:**
+- Every page has a `<!-- LAUNCH: remove noindex when the site is ready to be crawled -->`
+  comment right above the meta tag.
+- `robots.txt` has a `LAUNCH:` comment above the Disallow line.
+- Grep marker: `grep -rn "LAUNCH:" .` surfaces every touch point.
+
+**Decision needed:** When do we flip? Any final content review first?
+
+---
+
+## 7 & 8. Individual piece pages with unique URLs (P1)
+
+**What:** Every tile on `/work` currently links to the same `piece.html`
+("Warrior sleeve"). Each real tattoo should get its own URL, title, meta,
+canonical, H1, and copy.
+
+**Approaches:**
+- **A. Static per-piece HTML files** (`work/dragon-thigh.html`, etc.) —
+  best SEO, most work. ~39 files, each hand-written.
+- **B. Static template + data-driven copy** — one `piece.html` reads a
+  `?id=` query param and pulls from `content.js`. Fewer files but Google
+  may treat them as duplicate content unless we serve unique HTML.
+- **C. Static generator** (Eleventy, Astro) — proper templating with real
+  static output. Adds a build step you said you wanted to avoid.
+
+**Decision needed:** Approach + how much per-piece copy to write. If we
+go with A, each piece needs ~2 short paragraphs and a proper title —
+that's real writing work.
+
+---
+
+## 9a. Descriptive image filenames (P1)
+
+**What:** Rename `IMG_6908.jpeg` → `dragon-thigh-black-grey-tattoo.jpeg`,
+etc. Lowercase, hyphen-separated, descriptive.
+
+**Held because:** Every rename cascades through `content.js` refs and any
+future per-piece URLs. Better to do once after the piece-page structure
+lands.
+
+**Scope:** 39 tattoo files + 11 featured + 1 portrait = 51 files.
+
+**Decision needed:** Do it now, do it after piece pages, or skip and
+accept the tradeoff. Also: naming convention (`what-where-style.jpg`
+vs. `piece-slug.jpg`).
+
+---
+
+## 9b. Alt text audit (P1)
+
+**What:** Some gallery alts are too terse — e.g. `alt="Arm sleeve"`,
+`alt="Thigh — dragon"`. Checklist recommends `alt="Black and grey realism
+sleeve featuring a warrior portrait"` style.
+
+**Current state:**
+- Featured 11 have solid descriptive alts (e.g., "Vibrant hibiscus,
+  marigold and hummingbird color sleeve").
+- ~10 gallery items have thin alts.
+
+**Decision needed:** Do a pass now or leave until piece-page copy is
+written (since alts and page copy overlap).
+
+---
+
+## 11. Camp Hill Collective backlink (P1)
+
+**What:** Studio's artist page should link directly to Noah's portfolio
+website in addition to Instagram.
+
+**Blocker:** Not code. Someone needs to ask the studio.
+
+**Decision needed:** Do you want to make the ask, or should Noah? Ideal
+anchor: "Noah Rasmus Tattoo Portfolio" pointing to the canonical domain.
+
+---
+
+## 15. Google Search Console (P1)
+
+**What:** Set up GSC on the production domain, verify ownership, submit
+sitemap, request indexing.
+
+**Blocker:** Happens after launch. Also requires the final domain to be
+locked in (see #21).
+
+**Decision needed:** Who runs GSC — you, Noah, or both? Which Google
+account?
+
+---
+
+## 19. Performance / Core Web Vitals (P2)
+
+**What:** Lighthouse pass. Modern formats (WebP/AVIF), responsive image
+sizes, lazy-loading below the fold, declared width/height, don't
+lazy-load the hero.
+
+**Current state:**
+- Images already resized to max 1600px, quality ~78-82, ~200-575KB each
+- Hero uses two `<img>` layers stacked (JS-swapped) — not lazy
+- No `loading="lazy"` anywhere yet
+- No responsive `srcset` — single size served to all viewports
+
+**Decision needed:** Full audit + fixes now, or deferred until launch?
+If now, do you want WebP conversion (needs `cwebp` install) or just add
+`loading="lazy"` and `width`/`height` attrs on tiles?
+
+---
+
+## 21. Custom domain (P1)
+
+**What:** Decide the final production domain and swap all references
+away from `noahrasmus.github.io`.
+
+**Touch points (all handled by one search-and-replace):**
+- Canonical `<link>` on all pages
+- OG `og:url` and `og:image` absolute URLs
+- JSON-LD `url` and `@id` fields
+- `sitemap.xml`
+- `robots.txt` (`Sitemap:` reference)
+
+**Decision needed:** What's the final domain? `noaharasmus.com`?
+Something else? Or ship on `noahrasmus.github.io` for a while?
+
+---
+
+## 12. OG images per page (P3)
+
+**What:** Currently most pages share the dragon (`IMG_6908`) as the OG
+image. Piece pages could use their own image; Work could pick something
+different from Home.
+
+**Decision needed:** Worth investing in per-page social imagery, or is
+one strong hero image enough for now?
+
+---
+
+## 22. Launch QA (P2)
+
+**What:** Full pre-launch checklist: robots, meta, canonicals, images,
+schema, sitemap, GSC.
+
+**Decision needed:** N/A — comes with launch.
+
+---
+
+## Additional items worth considering (not in original checklist)
+
+### Breadcrumb schema (P3)
+Once individual piece pages exist, `BreadcrumbList` JSON-LD helps search
+show `Noah Rasmus > Work > Warrior Sleeve` in results.
+
+### ImageObject schema on piece pages (P3)
+Adding `ImageObject` JSON-LD per piece can help image search rank the
+tattoo photos with proper attribution.
+
+### About-page content expansion (P2)
+Currently the About page is short (3 paragraphs). Checklist Section 17
+recommends: artistic background, design philosophy, specialization,
+approach to body placement, studio relationship. Real writing needed.
+
+### FAQ content (P3)
+If Noah gets recurring booking questions, an FAQ block with `FAQPage`
+schema can capture long-tail queries. Only worth it if real questions
+justify it.
