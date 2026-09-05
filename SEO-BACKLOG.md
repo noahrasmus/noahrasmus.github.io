@@ -59,16 +59,12 @@ be auto-derived from slug so no data duplication.
 
 ---
 
-## 15. Google Search Console (P1)
+## 15. Google Search Console (P1) — CODE DONE, GSC UI PENDING
 
-**What:** Set up GSC on the production domain, verify ownership, submit
-sitemap, request indexing.
-
-**Blocker:** Happens after launch. Also requires the final domain to be
-locked in (see #21).
-
-**Decision needed:** Who runs GSC — you, Noah, or both? Which Google
-account?
+`googlee533aa7fa171d0f1.html` committed to root. Remaining is
+account-side work in the Search Console dashboard: add the URL-prefix
+property `https://noahrasmus.github.io/`, click Verify, submit
+`sitemap.xml`, and request indexing on the top pages.
 
 ---
 
