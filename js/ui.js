@@ -28,19 +28,34 @@ function escapeAttr(s) {
   return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 }
 
+function isVideo(src) {
+  return /\.(mp4|webm)$/i.test(src || "");
+}
+
+function posterFor(src) {
+  return src.replace(/\.(mp4|webm)$/i, ".jpg");
+}
+
+function renderMedia(t) {
+  if (!t.src) return `<img src="" alt="" />`;
+  const src = withPrefix(t.src);
+  const alt = escapeAttr(t.alt || t.place);
+  if (isVideo(t.src)) {
+    const poster = escapeAttr(withPrefix(posterFor(t.src)));
+    return `<video autoplay muted loop playsinline preload="metadata" poster="${poster}" aria-label="${alt}"><source src="${escapeAttr(src)}" type="video/mp4"></video>`;
+  }
+  return `<img src="${escapeAttr(src)}" alt="${alt}" />`;
+}
+
 function renderTile(t) {
-  const hasImage = Boolean(t.src);
-  const slotClass = hasImage ? "slot slot--contain" : "slot";
-  const placeholder = hasImage ? "" : ` data-placeholder="${escapeAttr(t.place)}"`;
-  const src = hasImage ? withPrefix(t.src) : "";
-  const img = hasImage
-    ? `<img src="${escapeAttr(src)}" alt="${escapeAttr(t.alt || t.place)}" />`
-    : `<img src="" alt="" />`;
+  const hasMedia = Boolean(t.src);
+  const slotClass = hasMedia ? "slot slot--contain" : "slot";
+  const placeholder = hasMedia ? "" : ` data-placeholder="${escapeAttr(t.place)}"`;
   const href = t.slug ? withPrefix("work/" + t.slug + "/") : withPrefix("work.html");
   return `
     <div class="grid__piece" data-placement="${escapeAttr(t.tag)}" data-style="${escapeAttr(styleOf(t))}" style="grid-row: span ${t.span}">
       <a href="${escapeAttr(href)}">
-        <div class="${slotClass}"${placeholder}>${img}</div>
+        <div class="${slotClass}"${placeholder}>${renderMedia(t)}</div>
         <div class="grid__caption">${escapeAttr(t.place)}</div>
       </a>
     </div>

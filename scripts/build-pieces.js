@@ -27,6 +27,17 @@ function escape(s) {
     .replace(/"/g, "&quot;");
 }
 
+function isVideo(src) {
+  return /\.(mp4|webm)$/i.test(src || "");
+}
+function posterFor(src) {
+  return src.replace(/\.(mp4|webm)$/i, ".jpg");
+}
+function socialImage(t) {
+  // OG / JSON-LD image — always a real image URL, use poster when src is video.
+  return isVideo(t.src) ? posterFor(t.src) : t.src;
+}
+
 function isColor(t) {
   // Slug is authoritative — color pieces include "-color-" in the slug.
   return /-color-/.test(t.slug || "") || t.slug.endsWith("-color-sleeve");
@@ -102,7 +113,7 @@ function schemaJson(t, canonical, image) {
 function pageHtml(t) {
   const style = styleLabel(t);
   const canonical = `${DOMAIN}/work/${t.slug}/`;
-  const image = `${DOMAIN}/${t.src}`;
+  const image = `${DOMAIN}/${socialImage(t)}`;
   const seoTitle = `${t.title} on the ${t.place} — ${style} Realism | Noah Rasmus`;
   const description = `${style} realism tattoo by Noah Rasmus — ${t.alt || t.title.toLowerCase() + " on the " + t.place.toLowerCase()}. Custom work from Camp Hill, Pennsylvania.`;
   const schema = JSON.stringify(schemaJson(t, canonical, image), null, 2);
@@ -151,7 +162,9 @@ ${schema}
       <article class="piece">
         <div class="piece__image">
           <div class="slot slot--contain">
-            <img src="../../${escape(t.src)}" alt="${escape(t.alt || t.title)}" />
+            ${isVideo(t.src)
+              ? `<video controls playsinline preload="metadata" poster="../../${escape(posterFor(t.src))}" aria-label="${escape(t.alt || t.title)}"><source src="../../${escape(t.src)}" type="video/mp4"></video>`
+              : `<img src="../../${escape(t.src)}" alt="${escape(t.alt || t.title)}" />`}
           </div>
         </div>
 

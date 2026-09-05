@@ -55,15 +55,7 @@ be auto-derived from slug so no data duplication.
 
 ---
 
-## 11. Camp Hill Collective backlink (P1)
-
-**What:** Studio's artist page should link directly to Noah's portfolio
-website in addition to Instagram.
-
-**Blocker:** Not code. Someone needs to ask the studio.
-
-**Decision needed:** Do you want to make the ask, or should Noah? Ideal
-anchor: "Noah Rasmus Tattoo Portfolio" pointing to the canonical domain.
+## 11. Camp Hill Collective backlink (P1) — DEFERRED
 
 ---
 
