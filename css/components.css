@@ -106,6 +106,13 @@
   object-fit: cover;
   display: block;
 }
+/* Hide the img when src is empty/missing so the placeholder shows cleanly
+   instead of a broken-image icon. Once a real src is set, the img renders
+   and the ::after placeholder hides via the :has() rule below. */
+.slot img[src=""],
+.slot img:not([src]) {
+  display: none;
+}
 .slot::after {
   content: attr(data-placeholder);
   position: absolute;
