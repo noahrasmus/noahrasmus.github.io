@@ -179,7 +179,7 @@ ${schema}
           </div>
 
           <div class="piece__actions">
-            <a class="btn btn-primary" href="../../contact.html">Ask about this piece</a>
+            <a class="btn btn-primary" href="../../contact.html">Ask about similar work</a>
             <a class="btn btn-ghost" href="../../work.html">Back to work</a>
           </div>
         </div>
