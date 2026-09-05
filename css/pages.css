@@ -258,6 +258,7 @@
 .piece__tags {
   display: flex;
   gap: 6px;
+  flex-wrap: wrap;
 }
 .piece__title {
   font-size: 40px;

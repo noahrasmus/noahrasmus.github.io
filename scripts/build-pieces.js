@@ -36,6 +36,19 @@ function styleLabel(t) {
   return isColor(t) ? STYLE_LABEL_COLOR : STYLE_LABEL_BW;
 }
 
+// Derived "scope" chip — describes the piece's scale/kind at a glance.
+function scopeLabel(t) {
+  const alt = (t.alt || "").toLowerCase();
+  const place = (t.place || "").toLowerCase();
+  if (alt.includes("full-leg") || alt.includes("full leg")) return "Full leg";
+  if (alt.includes("full-back") || alt.includes("full back")) return "Back piece";
+  if (alt.includes("sleeve")) return "Sleeve";
+  if (place === "back" || place === "upper back") return "Back piece";
+  if (place === "chest") return "Chest piece";
+  if (place === "hands") return "Matching pair";
+  return "Custom piece";
+}
+
 function schemaJson(t, canonical, image) {
   const style = styleLabel(t);
   return {
@@ -143,19 +156,14 @@ ${schema}
         </div>
 
         <div class="piece__body">
-          <div class="piece__tags">
-            <span class="tag tag-outline">${escape(t.place)}</span>
-            <span class="tag tag-neutral">${escape(style)}</span>
-          </div>
-
           <h1 class="wm piece__title">${escape(t.title)}</h1>
 
-          <dl class="piece__meta">
-            <dt>Placement</dt>
-            <dd>${escape(t.place)}</dd>
-            <dt>Style</dt>
-            <dd>${escape(style)} realism</dd>
-          </dl>
+          <div class="piece__tags">
+            <span class="tag tag-outline">${escape(style)} Realism</span>
+            <span class="tag tag-neutral">${escape(t.place)}</span>
+            <span class="tag tag-neutral">${escape(t.tag)}</span>
+            <span class="tag tag-outline">${escape(scopeLabel(t))}</span>
+          </div>
 
           <div class="piece__actions">
             <a class="btn btn-primary" href="../../contact.html">Ask about this piece</a>
