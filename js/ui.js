@@ -17,13 +17,13 @@ function renderTile(t) {
   const slotClass = hasImage ? "slot slot--contain" : "slot";
   const placeholder = hasImage ? "" : ` data-placeholder="${escapeAttr(t.place)}"`;
   const img = hasImage
-    ? `<img src="${escapeAttr(t.src)}" alt="${escapeAttr(t.alt || t.place + " — " + t.year)}" />`
+    ? `<img src="${escapeAttr(t.src)}" alt="${escapeAttr(t.alt || t.place)}" />`
     : `<img src="" alt="" />`;
   return `
     <div class="grid__piece" data-tag="${escapeAttr(t.tag)}" style="grid-row: span ${t.span}">
       <a href="piece.html">
         <div class="${slotClass}"${placeholder}>${img}</div>
-        <div class="grid__caption">${escapeAttr(t.place)} · ${t.year}</div>
+        <div class="grid__caption">${escapeAttr(t.place)}</div>
       </a>
     </div>
   `;

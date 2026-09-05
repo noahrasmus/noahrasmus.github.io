@@ -20,7 +20,7 @@ const NAV = [
 //   src     path to image (leave empty '' for an unfilled slot on the grid)
 //   place   caption text ("Forearm", "Calf", …)
 //   tag     filter group on /work — one of the tags in FILTER_TAGS below
-//   year    caption year
+//   year    stored for reference; NOT currently rendered anywhere on the site
 //   span    grid-row span for the mixed-height gallery (2 or 3)
 //   alt     accessible description of the piece
 //
