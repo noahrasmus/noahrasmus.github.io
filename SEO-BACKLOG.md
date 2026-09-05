@@ -17,24 +17,23 @@ as of this commit.
 
 ---
 
-## 7 & 8. Individual piece pages with unique URLs (P1)
+## 7 & 8. Individual piece pages with unique URLs (P1) — DONE
 
-**What:** Every tile on `/work` currently links to the same `piece.html`
-("Warrior sleeve"). Each real tattoo should get its own URL, title, meta,
-canonical, H1, and copy.
+Each of the 39 pieces now lives at `/work/{slug}/` (extensionless via
+directory-index). Every page has:
+- Unique title, meta description, canonical
+- OG + Twitter card
+- JSON-LD `VisualArtwork` linked to `Person` (Noah) and `TattooParlor`
+  (Camp Hill Collective)
+- Placement + Style meta list
+- Actions: "Ask about this piece" → contact, "Back to work" → gallery
 
-**Approaches:**
-- **A. Static per-piece HTML files** (`work/dragon-thigh.html`, etc.) —
-  best SEO, most work. ~39 files, each hand-written.
-- **B. Static template + data-driven copy** — one `piece.html` reads a
-  `?id=` query param and pulls from `content.js`. Fewer files but Google
-  may treat them as duplicate content unless we serve unique HTML.
-- **C. Static generator** (Eleventy, Astro) — proper templating with real
-  static output. Adds a build step you said you wanted to avoid.
+Copy is intentionally minimal for now — no paragraphs. Add per-piece
+narrative later when ready.
 
-**Decision needed:** Approach + how much per-piece copy to write. If we
-go with A, each piece needs ~2 short paragraphs and a proper title —
-that's real writing work.
+**Generator:** `scripts/build-pieces.js` reads `TATTOOS` from
+`content.js` and writes `work/{slug}/index.html` for each entry. Run
+`node scripts/build-pieces.js` whenever TATTOOS changes.
 
 ---
 

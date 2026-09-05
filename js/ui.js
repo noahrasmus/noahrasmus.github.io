@@ -8,6 +8,17 @@ const { SITE, NAV, TATTOOS, FILTER_TAGS, MOTION } = window.__NR;
 
 /* ─── helpers ─── */
 
+// Nav prefix — pages that live in a subdirectory (e.g. /work/{slug}/)
+// set <body data-nav-prefix="../../"> so links to work.html / about.html
+// / contact.html / index.html / assets/ resolve correctly.
+const NAV_PREFIX = (typeof document !== "undefined" && document.body && document.body.dataset.navPrefix) || "";
+
+function withPrefix(href) {
+  // Absolute URLs (http, //, /) pass through unchanged.
+  if (/^(https?:)?\/\//.test(href) || href.startsWith("/")) return href;
+  return NAV_PREFIX + href;
+}
+
 function escapeAttr(s) {
   return String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 }
@@ -16,12 +27,14 @@ function renderTile(t) {
   const hasImage = Boolean(t.src);
   const slotClass = hasImage ? "slot slot--contain" : "slot";
   const placeholder = hasImage ? "" : ` data-placeholder="${escapeAttr(t.place)}"`;
+  const src = hasImage ? withPrefix(t.src) : "";
   const img = hasImage
-    ? `<img src="${escapeAttr(t.src)}" alt="${escapeAttr(t.alt || t.place)}" />`
+    ? `<img src="${escapeAttr(src)}" alt="${escapeAttr(t.alt || t.place)}" />`
     : `<img src="" alt="" />`;
+  const href = t.slug ? withPrefix("work/" + t.slug + "/") : withPrefix("work.html");
   return `
     <div class="grid__piece" data-tag="${escapeAttr(t.tag)}" style="grid-row: span ${t.span}">
-      <a href="piece.html">
+      <a href="${escapeAttr(href)}">
         <div class="${slotClass}"${placeholder}>${img}</div>
         <div class="grid__caption">${escapeAttr(t.place)}</div>
       </a>
@@ -34,7 +47,7 @@ function renderTile(t) {
 function renderNavLinks(activePage) {
   return NAV.map(
     (n) =>
-      `<a href="${n.href}"${n.page === activePage ? ' aria-current="page"' : ""}>${n.label}</a>`,
+      `<a href="${escapeAttr(withPrefix(n.href))}"${n.page === activePage ? ' aria-current="page"' : ""}>${n.label}</a>`,
   ).join("");
 }
 
@@ -45,7 +58,7 @@ function initSiteHeader() {
   if (!host) return;
   const activePage = document.body.dataset.page;
   host.innerHTML = `
-    <a class="site-header__brand" href="index.html">${SITE.brand}</a>
+    <a class="site-header__brand" href="${escapeAttr(withPrefix("index.html"))}">${SITE.brand}</a>
     <button class="site-header__nav-toggle" type="button" aria-label="Toggle navigation">≡</button>
     <nav class="nb" aria-label="Primary">${renderNavLinks(activePage)}</nav>
   `;
