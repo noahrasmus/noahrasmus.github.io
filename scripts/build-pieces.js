@@ -28,8 +28,8 @@ function escape(s) {
 }
 
 function isColor(t) {
-  // Heuristic — we tagged color pieces in the alt text.
-  return /\(color\)/i.test(t.alt || "");
+  // Slug is authoritative — color pieces include "-color-" in the slug.
+  return /-color-/.test(t.slug || "") || t.slug.endsWith("-color-sleeve");
 }
 
 function styleLabel(t) {

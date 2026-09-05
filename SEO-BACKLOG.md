@@ -47,19 +47,11 @@ All 39 tattoo images renamed to match their slug and moved to
 
 ---
 
-## 9b. Alt text audit (P1)
+## 9b. Alt text audit (P1) — DONE
 
-**What:** Some gallery alts are too terse — e.g. `alt="Arm sleeve"`,
-`alt="Thigh — dragon"`. Checklist recommends `alt="Black and grey realism
-sleeve featuring a warrior portrait"` style.
-
-**Current state:**
-- Featured 11 have solid descriptive alts (e.g., "Vibrant hibiscus,
-  marigold and hummingbird color sleeve").
-- ~10 gallery items have thin alts.
-
-**Decision needed:** Do a pass now or leave until piece-page copy is
-written (since alts and page copy overlap).
+All 39 alts now lead with the style keyword — `Black and grey realism — {description}`
+or `Color realism — {description}`. Piece-page style label continues to
+be auto-derived from slug so no data duplication.
 
 ---
 
