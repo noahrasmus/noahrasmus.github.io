@@ -9,20 +9,11 @@ the original checklist.
 
 ---
 
-## 1. Launch flip (P0)
+## 1. Launch flip (P0) — DONE
 
-**What:** Remove `<meta name="robots" content="noindex, nofollow">` from every
-page. Change `robots.txt` from `Disallow: /` to `Allow: /`.
-
-**Held because:** You said we'd launch together — not doing it silently.
-
-**Prep already in place:**
-- Every page has a `<!-- LAUNCH: remove noindex when the site is ready to be crawled -->`
-  comment right above the meta tag.
-- `robots.txt` has a `LAUNCH:` comment above the Disallow line.
-- Grep marker: `grep -rn "LAUNCH:" .` surfaces every touch point.
-
-**Decision needed:** When do we flip? Any final content review first?
+All 5 pages now carry `<meta name="robots" content="index, follow, max-image-preview:large">`.
+`robots.txt` is `Allow: /` and references the sitemap. Site is crawlable
+as of this commit.
 
 ---
 

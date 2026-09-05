@@ -1,6 +1,4 @@
-# Site in development — no indexing until launch.
-# LAUNCH: replace the Disallow with `Allow: /` when ready to be crawled.
 User-agent: *
-Disallow: /
+Allow: /
 
 Sitemap: https://noahrasmus.github.io/sitemap.xml
