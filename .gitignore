@@ -1,3 +1,10 @@
+# Raw source media — HEIC and MOV don't render in most browsers.
+# We commit the converted .jpeg files instead.
+*.HEIC
+*.heic
+*.MOV
+*.mov
+
 .DS_Store
 Thumbs.db
 node_modules/
