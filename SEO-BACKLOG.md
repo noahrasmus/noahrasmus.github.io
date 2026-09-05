@@ -37,20 +37,13 @@ narrative later when ready.
 
 ---
 
-## 9a. Descriptive image filenames (P1)
+## 9a. Descriptive image filenames (P1) — DONE
 
-**What:** Rename `IMG_6908.jpeg` → `dragon-thigh-black-grey-tattoo.jpeg`,
-etc. Lowercase, hyphen-separated, descriptive.
-
-**Held because:** Every rename cascades through `content.js` refs and any
-future per-piece URLs. Better to do once after the piece-page structure
-lands.
-
-**Scope:** 39 tattoo files + 11 featured + 1 portrait = 51 files.
-
-**Decision needed:** Do it now, do it after piece pages, or skip and
-accept the tradeoff. Also: naming convention (`what-where-style.jpg`
-vs. `piece-slug.jpg`).
+All 39 tattoo images renamed to match their slug and moved to
+`assets/work/{slug}.{ext}` — e.g., `assets/work/dragon-thigh.jpeg`,
+`assets/work/hooded-reaper-calf.jpeg`. `git mv` preserves history.
+`content.js` src refs updated in the same pass, piece pages regenerated,
+4 orphan duplicate JPEGs removed.
 
 ---
 
