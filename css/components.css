@@ -288,11 +288,6 @@
 .info-grid__value {
   font: 300 15px/1.5 var(--font-body);
 }
-@media (max-width: 560px) {
-  .info-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 /* ─── generic caps label ─── */
 .label-caps {
