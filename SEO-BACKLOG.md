@@ -100,12 +100,17 @@ each renders portrait-orientation images.
 
 ---
 
-## 22. Launch QA (P2)
+## 22. Launch QA (P2) — PASSED
 
-**What:** Full pre-launch checklist: robots, meta, canonicals, images,
-schema, sitemap, GSC.
-
-**Decision needed:** N/A — comes with launch.
+Automated check on 2026-09-05:
+- Crawlable, no accidental noindex/nofollow
+- Unique keyworded titles on all 4 top-level pages
+- Canonicals on every page
+- Camp Hill mentioned on every top-level page
+- All 39 external anchors open in a new tab
+- 51-URL sitemap, referenced by robots.txt
+- JSON-LD (Person + TattooParlor) on Home / About / Contact
+- Real SVG favicon everywhere
 
 ---
 
