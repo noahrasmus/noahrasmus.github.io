@@ -120,12 +120,13 @@ function initFilters() {
   apply("All");
 }
 
-/* ─── home preview grid (subset of TATTOOS with real images) ─── */
+/* ─── home preview grid — non-featured pieces only, so it doesn't
+       duplicate what's already cycling through the slider above ─── */
 
 function initPreviewGrid() {
   const grid = document.querySelector("[data-preview-grid]");
   if (!grid) return;
-  grid.innerHTML = TATTOOS.filter((t) => t.src).map(renderTile).join("");
+  grid.innerHTML = TATTOOS.filter((t) => t.src && !t.featured).map(renderTile).join("");
 }
 
 /* ─── home hero slider ─── */
@@ -135,7 +136,7 @@ function initSlider() {
   const strip = document.querySelector("[data-recent-strip]");
   if (!stage || !strip) return;
 
-  const images = TATTOOS.filter((t) => t.src).map((t) => ({ src: t.src, alt: t.alt }));
+  const images = TATTOOS.filter((t) => t.src && t.featured).map((t) => ({ src: t.src, alt: t.alt }));
   if (!images.length) return;
 
   const { rotateMs, crossfadeMs } = MOTION;

@@ -17,29 +17,32 @@ const NAV = [
 ];
 
 // Each entry:
-//   src     path to image (leave empty '' for an unfilled slot on the grid)
-//   place   caption text ("Forearm", "Calf", …)
-//   tag     filter group on /work — one of the tags in FILTER_TAGS below
-//   year    stored for reference; NOT currently rendered anywhere on the site
-//   span    grid-row span for the mixed-height gallery (2 or 3)
-//   alt     accessible description of the piece
+//   src       path to image (leave empty '' for an unfilled slot on the grid)
+//   place     caption text ("Forearm", "Calf", …)
+//   tag       filter group on /work — one of the tags in FILTER_TAGS below
+//   year      stored for reference; NOT currently rendered anywhere on the site
+//   span      grid-row span for the mixed-height gallery (2 or 3)
+//   alt       accessible description of the piece
+//   featured  optional true — appears in the Home slider; excluded from the
+//             Home preview grid. Untagged pieces appear only in the preview
+//             grid and Work page. Work page shows everything either way.
 //
 // Order matters — first items appear first in the slider, first in the
 // preview on Home, and first in the Work grid. "featured" pieces stay
 // on top; everything below fills the rest of the gallery.
 const TATTOOS = [
-  // ─── Featured pieces (front and center) ───────────────────
-  { src: "assets/featured/IMG_6908.jpeg", place: "Thigh",     tag: "Leg", year: 2025, span: 3, alt: "Dragon with outstretched wing on the thigh" },
-  { src: "assets/featured/IMG_7573.jpeg", place: "Upper arm", tag: "Arm", year: 2025, span: 3, alt: "Vibrant hibiscus, marigold and hummingbird color sleeve" },
-  { src: "assets/featured/IMG_7652.jpeg", place: "Arm",       tag: "Arm", year: 2025, span: 3, alt: "Mountain scene with roaring tiger and samurai" },
-  { src: "assets/featured/IMG_7461.jpeg", place: "Hip",       tag: "Leg", year: 2025, span: 2, alt: "Fine-line botanical florals across the hip and thigh" },
-  { src: "assets/featured/IMG_6207.jpeg", place: "Calf",      tag: "Leg", year: 2025, span: 3, alt: "Hooded reaper skull with skeletal hand on the calf" },
-  { src: "assets/featured/IMG_7699.jpeg", place: "Shin",      tag: "Leg", year: 2025, span: 3, alt: "Samurai skull in helmet gripping a katana" },
-  { src: "assets/featured/IMG_7277.jpeg", place: "Upper arm", tag: "Arm", year: 2025, span: 3, alt: "Grotesque creature crowned with thorns" },
-  { src: "assets/featured/IMG_6279.jpeg", place: "Forearm",   tag: "Arm", year: 2025, span: 2, alt: "Hooded angel-knight holding a sword under a moon" },
-  { src: "assets/featured/IMG_6587.jpeg", place: "Calf",      tag: "Leg", year: 2025, span: 3, alt: "Vegas gambling scene — cards, dice, chips and cash" },
-  { src: "assets/featured/IMG_7478.jpeg", place: "Forearm",   tag: "Arm", year: 2025, span: 2, alt: "Realistic black and grey rose in progress" },
-  { src: "assets/featured/IMG_7547.jpeg", place: "Calf",      tag: "Leg", year: 2025, span: 3, alt: "Stormtrooper standing before the Imperial insignia" },
+  // ─── Featured pieces (Home slider — excluded from Home preview grid) ─
+  { src: "assets/featured/IMG_6908.jpeg", place: "Thigh",     tag: "Leg", year: 2025, span: 3, featured: true, alt: "Dragon with outstretched wing on the thigh" },
+  { src: "assets/featured/IMG_7573.jpeg", place: "Upper arm", tag: "Arm", year: 2025, span: 3, featured: true, alt: "Vibrant hibiscus, marigold and hummingbird color sleeve" },
+  { src: "assets/featured/IMG_7652.jpeg", place: "Arm",       tag: "Arm", year: 2025, span: 3, featured: true, alt: "Mountain scene with roaring tiger and samurai" },
+  { src: "assets/featured/IMG_7461.jpeg", place: "Hip",       tag: "Leg", year: 2025, span: 2, featured: true, alt: "Fine-line botanical florals across the hip and thigh" },
+  { src: "assets/featured/IMG_6207.jpeg", place: "Calf",      tag: "Leg", year: 2025, span: 3, featured: true, alt: "Hooded reaper skull with skeletal hand on the calf" },
+  { src: "assets/featured/IMG_7699.jpeg", place: "Shin",      tag: "Leg", year: 2025, span: 3, featured: true, alt: "Samurai skull in helmet gripping a katana" },
+  { src: "assets/featured/IMG_7277.jpeg", place: "Upper arm", tag: "Arm", year: 2025, span: 3, featured: true, alt: "Grotesque creature crowned with thorns" },
+  { src: "assets/featured/IMG_6279.jpeg", place: "Forearm",   tag: "Arm", year: 2025, span: 2, featured: true, alt: "Hooded angel-knight holding a sword under a moon" },
+  { src: "assets/featured/IMG_6587.jpeg", place: "Calf",      tag: "Leg", year: 2025, span: 3, featured: true, alt: "Vegas gambling scene — cards, dice, chips and cash" },
+  { src: "assets/featured/IMG_7478.jpeg", place: "Forearm",   tag: "Arm", year: 2025, span: 2, featured: true, alt: "Realistic black and grey rose in progress" },
+  { src: "assets/featured/IMG_7547.jpeg", place: "Calf",      tag: "Leg", year: 2025, span: 3, featured: true, alt: "Stormtrooper standing before the Imperial insignia" },
 
   // ─── Additional gallery pieces ────────────────────────────
   { src: "assets/IMG_1124.jpeg",         place: "Arm",       tag: "Arm",  year: 2025, span: 3, alt: "Portrait-and-skull morph with snake and skull sleeve" },
