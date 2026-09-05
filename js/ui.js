@@ -4,7 +4,12 @@
    of them on every page without checking.
    ───────────────────────────────────────────────────────────── */
 (function () {
-const { SITE, NAV, TATTOOS, FILTER_TAGS, MOTION } = window.__NR;
+const { SITE, NAV, TATTOOS, FILTER_TAGS, FILTER_STYLES, MOTION } = window.__NR;
+
+// Style is derived from slug (slug contains "-color-" → color piece).
+function styleOf(t) {
+  return /-color-/.test(t.slug || "") ? "Color" : "Black & Grey";
+}
 
 /* ─── helpers ─── */
 
@@ -33,7 +38,7 @@ function renderTile(t) {
     : `<img src="" alt="" />`;
   const href = t.slug ? withPrefix("work/" + t.slug + "/") : withPrefix("work.html");
   return `
-    <div class="grid__piece" data-tag="${escapeAttr(t.tag)}" style="grid-row: span ${t.span}">
+    <div class="grid__piece" data-placement="${escapeAttr(t.tag)}" data-style="${escapeAttr(styleOf(t))}" style="grid-row: span ${t.span}">
       <a href="${escapeAttr(href)}">
         <div class="${slotClass}"${placeholder}>${img}</div>
         <div class="grid__caption">${escapeAttr(t.place)}</div>
@@ -92,45 +97,74 @@ function initWorkGrid() {
   grid.innerHTML = TATTOOS.map(renderTile).join("");
 }
 
-/* ─── work filters ─── */
+/* ─── work filters — supports multiple dimensions (placement + style).
+       Each <div data-filters="placement">…</div> row gets its own button set;
+       selections across rows AND together. ─── */
 
 function initFilters() {
-  const host = document.querySelector("[data-filters]");
+  const hosts = document.querySelectorAll("[data-filters]");
   const grid = document.querySelector("[data-grid]");
-  if (!host || !grid) return;
+  if (!hosts.length || !grid) return;
 
-  const tags = ["All", ...FILTER_TAGS];
-  host.innerHTML = tags
-    .map(
-      (t) =>
-        `<button class="filter" type="button" data-filter="${escapeAttr(t)}" aria-pressed="${t === "All"}">${t}</button>`,
-    )
-    .join("");
-
-  const filters = host.querySelectorAll("[data-filter]");
+  const OPTIONS = {
+    placement: FILTER_TAGS,
+    style: FILTER_STYLES,
+  };
+  const items = Array.from(grid.querySelectorAll(".grid__piece"));
   const countEl = document.querySelector("[data-count]");
-  const items = Array.from(grid.querySelectorAll("[data-tag]"));
+  const active = {};       // dimension → selected label ("All" or a value)
+  const buttonsByDim = {}; // dimension → NodeList of buttons
 
-  function apply(current) {
+  function apply() {
     let shown = 0;
     for (const item of items) {
-      const match = current === "All" || item.dataset.tag === current;
+      let match = true;
+      for (const dim in active) {
+        if (active[dim] === "All") continue;
+        if (item.dataset[dim] !== active[dim]) {
+          match = false;
+          break;
+        }
+      }
       item.style.display = match ? "" : "none";
       if (match) shown++;
     }
     if (countEl) {
+      const parts = Object.values(active).filter((v) => v !== "All");
       countEl.textContent =
-        shown + " of " + items.length + " pieces" + (current === "All" ? "" : " · " + current);
+        shown + " of " + items.length + " pieces" + (parts.length ? " · " + parts.join(" · ") : "");
     }
-    for (const btn of filters) {
-      btn.setAttribute("aria-pressed", btn.dataset.filter === current ? "true" : "false");
+    for (const dim in buttonsByDim) {
+      for (const btn of buttonsByDim[dim]) {
+        btn.setAttribute(
+          "aria-pressed",
+          btn.dataset.filter === active[dim] ? "true" : "false",
+        );
+      }
     }
   }
 
-  for (const btn of filters) {
-    btn.addEventListener("click", () => apply(btn.dataset.filter));
+  for (const host of hosts) {
+    const dim = host.dataset.filters;
+    if (!OPTIONS[dim]) continue;
+    const labels = ["All", ...OPTIONS[dim]];
+    host.innerHTML = labels
+      .map(
+        (l) =>
+          `<button class="filter" type="button" data-filter="${escapeAttr(l)}" aria-pressed="${l === "All"}">${escapeAttr(l)}</button>`,
+      )
+      .join("");
+    buttonsByDim[dim] = host.querySelectorAll("[data-filter]");
+    active[dim] = "All";
+    for (const btn of buttonsByDim[dim]) {
+      btn.addEventListener("click", () => {
+        active[dim] = btn.dataset.filter;
+        apply();
+      });
+    }
   }
-  apply("All");
+
+  apply();
 }
 
 /* ─── home preview grid — non-featured pieces only, so it doesn't

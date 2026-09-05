@@ -84,7 +84,9 @@ const TATTOOS = [
 ];
 
 // Filter buttons shown on /work — order preserved. "All" is added automatically.
+// Each filter row is a dimension; the Work page ANDs them together.
 const FILTER_TAGS = ["Arm", "Leg", "Back", "Torso"];
+const FILTER_STYLES = ["Black & Grey", "Color"];
 
 const MOTION = {
   rotateMs: 4500, // slider auto-advance interval (keep in sync with --rotate-ms in tokens.css)
@@ -92,11 +94,11 @@ const MOTION = {
 };
 
 if (typeof window !== "undefined") {
-  window.__NR = { SITE, NAV, TATTOOS, FILTER_TAGS, MOTION };
+  window.__NR = { SITE, NAV, TATTOOS, FILTER_TAGS, FILTER_STYLES, MOTION };
 }
 
 // Node consumers (scripts/build-pieces.js) can also import these values.
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = { SITE, NAV, TATTOOS, FILTER_TAGS, MOTION };
+  module.exports = { SITE, NAV, TATTOOS, FILTER_TAGS, FILTER_STYLES, MOTION };
 }
 })();
