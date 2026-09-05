@@ -29,8 +29,8 @@ const NAV = [
 // on top; everything below fills the rest of the gallery.
 const TATTOOS = [
   // ─── Featured pieces (front and center) ───────────────────
-  { src: "assets/featured/IMG_7573.jpeg", place: "Upper arm", tag: "Arm", year: 2025, span: 3, alt: "Vibrant hibiscus, marigold and hummingbird color sleeve" },
   { src: "assets/featured/IMG_6908.jpeg", place: "Thigh",     tag: "Leg", year: 2025, span: 3, alt: "Dragon with outstretched wing on the thigh" },
+  { src: "assets/featured/IMG_7573.jpeg", place: "Upper arm", tag: "Arm", year: 2025, span: 3, alt: "Vibrant hibiscus, marigold and hummingbird color sleeve" },
   { src: "assets/featured/IMG_7652.jpeg", place: "Arm",       tag: "Arm", year: 2025, span: 3, alt: "Mountain scene with roaring tiger and samurai" },
   { src: "assets/featured/IMG_7461.jpeg", place: "Hip",       tag: "Leg", year: 2025, span: 2, alt: "Fine-line botanical florals across the hip and thigh" },
   { src: "assets/featured/IMG_6207.jpeg", place: "Calf",      tag: "Leg", year: 2025, span: 3, alt: "Hooded reaper skull with skeletal hand on the calf" },
