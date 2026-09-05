@@ -33,6 +33,7 @@ const NAV = [
 const TATTOOS = [
   // ─── Featured pieces (Home slider — excluded from Home preview grid) ─
   { slug: "dragon-thigh",                       title: "Dragon",                        src: "assets/work/dragon-thigh.jpeg", place: "Thigh",     tag: "Leg",  year: 2025, span: 3, featured: true, alt: "Black and grey realism — dragon with outstretched wing on the thigh" },
+  { slug: "pokemon-color-forearm",              title: "Psyduck and Gengar",            src: "assets/work/pokemon-color-forearm.jpeg", place: "Forearm",   tag: "Arm",  year: 2025, span: 3, featured: true, alt: "Color realism — psyduck and Gengar Pokemon piece" },
   { slug: "hibiscus-hummingbird-color-sleeve",  title: "Hibiscus and Hummingbird",      src: "assets/work/hibiscus-hummingbird-color-sleeve.jpeg", place: "Upper arm", tag: "Arm",  year: 2025, span: 3, featured: true, alt: "Color realism — vibrant hibiscus, marigold and hummingbird sleeve" },
   { slug: "tiger-mountain-samurai-sleeve",      title: "Tiger and Mountain",            src: "assets/work/tiger-mountain-samurai-sleeve.jpeg", place: "Arm",       tag: "Arm",  year: 2025, span: 3, featured: true, alt: "Black and grey realism — mountain scene with roaring tiger and samurai" },
   { slug: "fine-line-florals-hip",              title: "Fine-Line Florals",             src: "assets/work/fine-line-florals-hip.jpeg", place: "Hip",       tag: "Leg",  year: 2025, span: 2, featured: true, alt: "Black and grey realism — fine-line botanical florals across the hip and thigh" },
@@ -62,7 +63,6 @@ const TATTOOS = [
   { slug: "kratos-color-upper-arm",             title: "Kratos",                        src: "assets/work/kratos-color-upper-arm.jpeg",         place: "Upper arm", tag: "Arm",  year: 2024, span: 3, alt: "Color realism — kratos with axe" },
   { slug: "skull-red-web-color-arm",            title: "Skull on Red Web",              src: "assets/work/skull-red-web-color-arm.jpeg",         place: "Arm",       tag: "Arm",  year: 2024, span: 3, alt: "Color realism — skull with red spider web" },
   { slug: "snowflakes-color-sleeve",            title: "Snowflakes and Blossoms",       src: "assets/work/snowflakes-color-sleeve.jpeg",         place: "Arm",       tag: "Arm",  year: 2024, span: 3, alt: "Color realism — snowflakes and cherry blossoms on deep blue" },
-  { slug: "pokemon-color-forearm",              title: "Psyduck and Gengar",            src: "assets/work/pokemon-color-forearm.jpeg",         place: "Forearm",   tag: "Arm",  year: 2025, span: 3, alt: "Color realism — psyduck and Gengar Pokemon piece" },
   { slug: "ghostface-color-hand",               title: "Ghostface",                     src: "assets/work/ghostface-color-hand.jpeg",         place: "Hand",      tag: "Arm",  year: 2025, span: 2, alt: "Color realism — ghostface with red rotary phone hand piece" },
 
   { slug: "plague-doctor-calf",                 title: "Plague Doctor",                 src: "assets/work/plague-doctor-calf.jpeg",         place: "Calf",      tag: "Leg",  year: 2025, span: 3, alt: "Black and grey realism — plague doctor holding a lantern" },
