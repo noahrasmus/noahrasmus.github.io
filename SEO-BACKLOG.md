@@ -68,49 +68,35 @@ property `https://noahrasmus.github.io/`, click Verify, submit
 
 ---
 
-## 19. Performance / Core Web Vitals (P2)
-
-**What:** Lighthouse pass. Modern formats (WebP/AVIF), responsive image
-sizes, lazy-loading below the fold, declared width/height, don't
-lazy-load the hero.
-
-**Current state:**
-- Images already resized to max 1600px, quality ~78-82, ~200-575KB each
-- Hero uses two `<img>` layers stacked (JS-swapped) — not lazy
-- No `loading="lazy"` anywhere yet
-- No responsive `srcset` — single size served to all viewports
-
-**Decision needed:** Full audit + fixes now, or deferred until launch?
-If now, do you want WebP conversion (needs `cwebp` install) or just add
-`loading="lazy"` and `width`/`height` attrs on tiles?
+## 19. Performance / Core Web Vitals (P2) — DEFERRED
 
 ---
 
-## 21. Custom domain (P1)
+## 21. Custom domain (P1) — WAITING ON DOMAIN PURCHASE
 
-**What:** Decide the final production domain and swap all references
-away from `noahrasmus.github.io`.
+Ship for now on `noahrasmus.github.io`. When a custom domain is bought:
+1. Tell me the domain → I add a `CNAME` file at repo root + swap every
+   `noahrasmus.github.io` reference across HTML/sitemap/robots/JSON-LD
+   in one commit
+2. Point DNS at GitHub Pages (`A` records or `ALIAS` per your registrar)
+3. Update GSC property to the new domain
 
-**Touch points (all handled by one search-and-replace):**
-- Canonical `<link>` on all pages
-- OG `og:url` and `og:image` absolute URLs
-- JSON-LD `url` and `@id` fields
-- `sitemap.xml`
-- `robots.txt` (`Sitemap:` reference)
-
-**Decision needed:** What's the final domain? `noaharasmus.com`?
-Something else? Or ship on `noahrasmus.github.io` for a while?
+`grep -rn "noahrasmus.github.io" .` catches every touch point.
 
 ---
 
-## 12. OG images per page (P3)
+## 12. OG images per page (P3) — DONE (quick pass)
 
-**What:** Currently most pages share the dragon (`IMG_6908`) as the OG
-image. Piece pages could use their own image; Work could pick something
-different from Home.
+- Home / Work / Contact → dragon (`assets/work/dragon-thigh.jpeg`)
+- About → Noah's portrait
+- Piece pages → each piece's own image (or poster for video pieces)
 
-**Decision needed:** Worth investing in per-page social imagery, or is
-one strong hero image enough for now?
+Also fixed 4 dead refs left over from the earlier `assets/featured/…` →
+`assets/work/…` rename that OG tags still pointed at.
+
+Not done: proper 1200×630 crops of each. Modest tradeoff — social
+platforms will crop, previews may lose some subject depending on how
+each renders portrait-orientation images.
 
 ---
 
