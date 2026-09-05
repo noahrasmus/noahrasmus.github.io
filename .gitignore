@@ -1,9 +1,16 @@
 # Raw source media — HEIC and MOV don't render in most browsers.
-# We commit the converted .jpeg files instead.
+# We commit the converted .jpeg / .mp4 files instead.
 *.HEIC
 *.heic
 *.MOV
 *.mov
+
+# Project-internal notes / source assets — should NOT be publicly served
+# from the GitHub Pages site.
+SEO-BACKLOG.md
+assets/artist/
+assets/logo/
+assets/most-recent-must/
 
 .DS_Store
 Thumbs.db
