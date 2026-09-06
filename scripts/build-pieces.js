@@ -112,10 +112,11 @@ function schemaJson(t, canonical, image) {
 
 function pageHtml(t) {
   const style = styleLabel(t);
+  const descStyle = isColor(t) ? "Color" : "Black and grey";
   const canonical = `${DOMAIN}/work/${t.slug}/`;
   const image = `${DOMAIN}/${socialImage(t)}`;
   const seoTitle = `${t.title} on the ${t.place} — ${style} Realism | Noah Rasmus`;
-  const description = `${style} realism tattoo by Noah Rasmus — ${t.alt || t.title.toLowerCase() + " on the " + t.place.toLowerCase()}. Custom work from Camp Hill, Pennsylvania.`;
+  const description = `${descStyle} realism ${t.title} tattoo on the ${t.place.toLowerCase()} by Noah Rasmus in Camp Hill, PA. View the custom piece and book with Noah.`;
   const schema = JSON.stringify(schemaJson(t, canonical, image), null, 2);
 
   return `<!DOCTYPE html>
