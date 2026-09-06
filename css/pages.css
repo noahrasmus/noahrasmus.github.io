@@ -155,22 +155,17 @@
   }
 }
 
-/* ─── Home: preview of Work page (fade-to-CTA) ─── */
-.preview-link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-  border-top: 1px solid var(--color-divider);
-  margin-top: 30px;
-}
-.preview-link:hover {
-  color: inherit;
-}
+/* ─── Home: preview of Work page (fade-to-CTA)
+       — grid tiles link to their own piece pages, and only the
+       "See all work" CTA links to /work.html. Overlay is
+       pointer-events:none so clicks pass through to tiles. ─── */
 .preview {
   position: relative;
   overflow: hidden;
   padding: 34px var(--page-pad-x) 60px;
   max-height: 620px;
+  border-top: 1px solid var(--color-divider);
+  margin-top: 30px;
 }
 .preview__grid {
   grid-auto-rows: 140px;
@@ -189,9 +184,9 @@
     color-mix(in srgb, var(--color-bg) 75%, transparent) 78%,
     color-mix(in srgb, var(--color-bg) 95%, transparent) 100%
   );
-  transition: background 250ms ease;
 }
 .preview__cta {
+  pointer-events: auto;
   font: 500 15px/1.2 var(--font-heading);
   color: var(--color-accent-300);
   padding: 12px 22px;
@@ -199,24 +194,17 @@
   border-radius: var(--radius-md);
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(2px);
+  text-decoration: none;
   transition: background 200ms ease, color 200ms ease, transform 200ms ease;
 }
-.preview-link:hover .preview__overlay {
-  background: linear-gradient(
-    to bottom,
-    color-mix(in srgb, var(--color-bg) 0%, transparent) 20%,
-    color-mix(in srgb, var(--color-bg) 60%, transparent) 55%,
-    color-mix(in srgb, var(--color-bg) 90%, transparent) 100%
-  );
-}
-.preview-link:hover .preview__cta {
+.preview__cta:hover {
   background: var(--color-accent);
   color: var(--color-bg-solid);
   transform: translateY(-1px);
 }
-.preview-link:focus-visible {
+.preview__cta:focus-visible {
   outline: 2px solid var(--color-accent);
-  outline-offset: -4px;
+  outline-offset: 2px;
 }
 
 /* ─── Work / gallery (1d) ─── */
