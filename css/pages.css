@@ -218,6 +218,12 @@
   font-size: 38px;
   line-height: 1;
 }
+.work-intro {
+  margin: 0 0 22px;
+  max-width: 640px;
+  font: 300 15.5px/1.7 var(--font-body);
+  color: var(--color-neutral-300);
+}
 @media (max-width: 900px) {
   .work-head h1 {
     font-size: 30px;
